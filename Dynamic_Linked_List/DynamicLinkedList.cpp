@@ -38,14 +38,23 @@ public:
         }
         else
         {
-            temp->data = data;
-            while (currentNode != nullptr)
+            if(IsEmpty())
             {
-                previousNode = currentNode;
-                currentNode = currentNode->nextNode;
+                temp->data = data;
+                temp->nextNode = nullptr;
+                head = temp;
             }
-            previousNode->nextNode = temp;
-            temp->nextNode = currentNode;
+            else
+            {
+                temp->data = data;
+                while (currentNode != nullptr)
+                {
+                    previousNode = currentNode;
+                    currentNode = currentNode->nextNode;
+                }
+                previousNode->nextNode = temp;
+                temp->nextNode = currentNode;
+            }
         }
         PrintList();
     }
