@@ -3,12 +3,13 @@
 
 #include <iostream>
 
+template <typename T>
 class LinkedList
 {
 private:
     typedef struct node
     {
-        int data;
+        T data;
         struct node* nextNode;
     }Node;
     Node* head = nullptr;
@@ -17,7 +18,7 @@ public:
     {
         std::cout << "\nLinkedList()\n" << std::endl;
     }
-    void InsertNodeFromHead(int data)
+    void InsertNodeFromHead(T data)
     {
         Node* temp = new Node{};
         temp->data = data;
@@ -25,7 +26,7 @@ public:
         head = temp;
         PrintList();
     }
-    void InsertNodeFromTail(int data)
+    void InsertNodeFromTail(T data)
     {
         Node* currentNode = head;
         Node* previousNode = nullptr;
@@ -108,19 +109,22 @@ public:
         Node* temp2;
 
         std::cout << "head -> ";
-
-        temp1 = head;
-        if(temp1 == nullptr)
+        if(IsEmpty())
         {
             std::cout << "";
         }
-        while (temp1 != nullptr)
+        else
         {
-            std::cout << temp1->data << " -> ";
-            temp2 = temp1;
-            temp1 = temp1->nextNode;
+            temp1 = head;
+            while (temp1 != nullptr)
+            {
+                std::cout << temp1->data << " -> ";
+                temp2 = temp1;
+                temp1 = temp1->nextNode;
+            }
         }
         std::cout << "null" << std::endl;
+        std::cout << std::endl;
     }
     ~LinkedList()
     {
@@ -133,7 +137,7 @@ int main()
 {
     std::cout << "Hello World!\n";
 
-    LinkedList ll;
+    LinkedList<int> ll;
 
     ll.PrintList();
 
