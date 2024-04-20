@@ -66,7 +66,7 @@ int main(void)
 
     if(status != -1)
     {
-        std::cout << "Element found." << std::endl;
+        std::cout << "Element found at index no." << status << std::endl;
     }
     else
     {
